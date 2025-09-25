@@ -20,14 +20,8 @@ public class Laba1 {
                 k[i][j]=calc(w[i],x[j]);
             }
         }
-        for(int i =0;i<9;i++){
-            for(int j=0;j<20;j++){
-                String val = String.format("%9.5f",k[i][j]);
-                System.out.print(val+" ");
+        print(k);
 
-            }
-            System.out.println();
-        }
     }
     public static float calc(int w,float x){
         if (w == 11){
@@ -37,6 +31,16 @@ public class Laba1 {
         }
         else {
             return (float) Math.tan(Math.tan((Math.pow(Math.log(Math.abs(x))/2,4*x))));
+        }
+    }
+    public static void print(float [][] m){
+        for(int i =0;i<9;i++){
+            for(int j=0;j<20;j++){
+                String val = String.format("%9.5f",m[i][j]);
+                System.out.print(val+" ");
+
+            }
+            System.out.println();
         }
     }
 
