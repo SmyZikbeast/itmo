@@ -1,0 +1,11 @@
+chmod -R 777 lab01;
+cp -r lab01/golduck0 lab01/magnezone2/yamask;
+ln -s lab01/pidgey9 lab01/golduck0/pidovepidgey;
+touch lab01/shelmet2_40;
+cat lab01/golduck0/pidove lab01/arcanine5/treecko > lab01/shelmet2_40;
+ln lab01/pidgey9 lab0/magnezone2/litwickpidgey;
+touch lab0/magnezone2/whirlpedeshelmet;
+cat lab01/shelmet2 > lab0/magnezone2/whirlpedeshelmet;
+cp lab01/shelmet2 lab01/arcanine5/rattata;
+ln -s lab01/agnezone2 lab01/Copy_20;
+./script2.sh;
