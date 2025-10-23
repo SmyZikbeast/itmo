@@ -657,46 +657,57 @@ NumbersR=dict([(x[1],x[0]) for x in Numbers.items()])
 LettersR=dict([(x[1],x[0]) for x in Letters.items()])
 def Bishop_go(start,end):
     ok=[]
-    print(whites,blacks)
+    flag='0'
     for x in reversed([h for h in Letters.keys()]):
         for y in Numbers.keys():
             if Letters[x]<Letters[start[0]] and Numbers[y]>Numbers[start[1]]:
                 if abs(Letters[start[0]] - Letters[x]) == abs(Numbers[start[1]] - Numbers[y]):
                     if x+y in whites or x+y in blacks:
-                        break
-                    else:
+                        flag='1'
+                    elif flag=='0':
                         ok.append(x+y)
-                        
+    flag='0'                    
     for x in Letters.keys():
         for y in Numbers.keys():
             if Letters[x]>Letters[start[0]] and Numbers[y]>Numbers[start[1]]:
                 if abs(Letters[start[0]] - Letters[x]) == abs(Numbers[start[1]] - Numbers[y]):
                     if x+y in whites or x+y in blacks:
-                        print(ok)
-                        break
-                    else:
+                        flag='1'
+                    elif flag=='0':
                         ok.append(x+y)
-                        
+    flag='0'                    
     for x in reversed([h for h in Letters.keys()]):
         for y in reversed(Numbers.keys()):
             if Letters[x]<Letters[start[0]] and Numbers[y]<Numbers[start[1]]:
                 if abs(Letters[start[0]] - Letters[x]) == abs(Numbers[start[1]] - Numbers[y]):
                     if x+y in whites or x+y in blacks:
-                        break
-                    else:
+                        flag='1'
+                    elif flag=='0':
                         ok.append(x+y)
-                        
+    flag='0'                    
     for x in ([h for h in Letters.keys()]):
         for y in reversed(Numbers.keys()):
             if Letters[x]>Letters[start[0]] and Numbers[y]<Numbers[start[1]]:
                 if abs(Letters[start[0]] - Letters[x]) == abs(Numbers[start[1]] - Numbers[y]):
                     if x+y in whites or x+y in blacks:
-                        break
-                    else:
-                        ok.append(x+y)
-                        
-    print(ok)
+                        flag='1'
+                    elif flag=='0':
+                        ok.append(x+y)            
     return ok
+def Rook_go(start,end):
+    if start[0]==end[0]:
+        for n in range(Numbers[min(end[1],start[1])]+100,Numbers[max(end[1],start[1])],100):
+            ps=start[0]+NumbersR[n]
+            if (ps in whites or ps in blacks):
+                return False
+        return True
+    elif start[1]==end[1]:
+        for n in range(Letters[min(end[0],start[0])]+100,Letters[max(end[0],start[0])],100):
+            ps=LettersR[n]+start[1]
+            if (ps in whites or ps in blacks):
+                return False
+        return True
+    return False
 def IsCorrectMove(start, end, piece):
     if start != end and start[0] in Letters and end[0] in Letters and start[1] in Numbers and start[1] in Numbers:
         if start in whites:
@@ -704,27 +715,14 @@ def IsCorrectMove(start, end, piece):
                 return False
             if piecesWhite[piece] =='bishop': #если слон 20.01.2025 14:51
                 if abs(Letters[start[0]] - Letters[end[0]]) == abs(Numbers[start[1]] - Numbers[end[1]]):
-                    Bishop_go(start,end)
-                    return True
+                    if end in Bishop_go(start,end):
+                        return True
             elif piecesWhite[piece] =='rook': #ЕСЛИ ЛАДЬЯ    
-                if start[0]==end[0]:
-                    for n in range(Numbers[min(end[1],start[1])]+100,Numbers[max(end[1],start[1])],100):
-                        ps=start[0]+NumbersR[n]
-                        if (ps in whites or ps in blacks):
-                            return False
-                    return True
-                elif start[1]==end[1]:
-                    for n in range(Letters[min(end[0],start[0])]+100,Letters[max(end[0],start[0])],100):
-                        ps=LettersR[n]+start[1]
-                        if (ps in whites or ps in blacks):
-                            return False
-                    return True
-                return False
+                return Rook_go(start,end)
             elif piecesWhite[piece] =='queen': #ЕСЛИ ФЕРЗЬ
                 if end in whites:
                     return False
-                if abs(Letters[start[0]] - Letters[end[0]]) == abs(Numbers[start[1]] - Numbers[end[1]]) or start[0]==end[0] or start[1]==end[1]:
-                    return True
+                return Rook_go(start,end) or end in Bishop_go(start,end)
             elif piecesWhite[piece] =='knight':
                 if end in whites:
                     return False
@@ -760,7 +758,8 @@ def IsCorrectMove(start, end, piece):
                 return False
             if piecesBlack[piece] =='bishop': #если слон 
                 if abs(Letters[start[0]] - Letters[end[0]]) == abs(Numbers[start[1]] - Numbers[end[1]]):
-                    return True
+                    if end in Bishop_go(start,end):
+                        return True
             elif piecesBlack[piece] =='rook': #ЕСЛИ ЛАДЬЯ
                 if start[0]==end[0] or start[1]==end[1]:
                     if start[0]==end[0]:
