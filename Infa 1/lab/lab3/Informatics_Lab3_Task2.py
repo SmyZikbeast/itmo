@@ -5,15 +5,12 @@
 from re import *
 
 def func(x):
-    return str(5*int(x)**3-13)
-
+    return ' h'+str(5*int(x)**3-13)+' '
 isu = 502792
 print('var number:', str(isu%5))
-
 integer = r'(([ ]|^)([1-9][0-9]*)([ ]|$))'
-example='12354376 + 645.34556 = 234 432 - 2345345 6345'
-while [x for x in finditer(integer,example)]:
-    x=[h for h in finditer(integer,example)][0]
-    example=example[:x.start()]+f' h{func(x.group())} '+example[x.end():]
+example='12354376 + 645.34556 = 234 31254 412'
+example = sub(integer, lambda m: func(m.group()), example)
+
 print(example.strip().replace('h',''))
-    
+
