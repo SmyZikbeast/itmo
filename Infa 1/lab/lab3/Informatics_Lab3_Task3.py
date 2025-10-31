@@ -5,11 +5,31 @@
 from re import *
 
 isu = 502792
-print('var number:', str(isu%7))
-example = 'Студент Вася вспомнил, что на своей лекции Балакшин П.В. упоминал про старшекурсников, которые будут ему помогать: Анищенко А.А., Машина Е.А. и Голованова-Иванова Д.В., Зверюган С.С.'
-ex2 = 'В списке участников есть Иванов И.В., Петров П.П., а также Королёва К.Ю. и Левченко И.И.'
-full_name = r'(([А-ЯЁ][а-яё]+(-[А-ЯЁ][а-яё]+)?) [А-ЯЁ][.][А-ЯЁ][.])'
-surnames_list = [x[1] for x in findall(full_name,example)]
-#surnames_list = [x.group()[:-5] for x in finditer(full_name,example)]
-for surname in surnames_list:
-    print(surname)
+print('var number:', str(isu%3))
+
+example1=2-1
+example='Футбольный клуб «Реал Мадрид» является 15-кратным обладателем главного футбольного европейского трофея – Лиги Чемпионов. Данный турнир организован Союзом европейских футбольных ассоциаций (УЕФА). Идея о континентальном футбольном турнире пришла к журналисту Габриэлю Ано в 1955 году.'
+
+list_ends_2 = ["ый", "ий", "ой", "ьий", "ая", "яя", "ое", "ее", "ые", "ии", "ой", "ей", "ую", "юю", "ом", "ем", "ых", "их"]
+list_ends_3 = ["ьий", "ого", "его", "ому", "ему", "ыми", "ими"]
+list_ends_4 = ["ские"]
+
+for word in example.split():
+    list_words=[]
+    if word[-4:] in list_ends_4: #проверка на прилагательное c 4-окончанием
+        pattern = rf'{word[:-4].lower()}[а-яё]+'
+        list_words=[x.group() for x in finditer(pattern,example.lower())]
+        if len(list_words)>1:
+            example = sub(pattern, list_words[example1], example, flags = IGNORECASE)
+    elif word[-3:] in list_ends_3: #проверка на прилагательное с 3-окончанием
+        pattern = rf'{word[:-3].lower()}[а-яё]+'
+        list_words=[x.group() for x in finditer(pattern,example.lower())]
+        if len(list_words)>1:
+            example = sub(pattern, list_words[example1], example, flags = IGNORECASE)
+    elif word[-2:] in list_ends_2: #проверка на прилагательное с 2-окончанием
+        pattern = rf'{word[:-2].lower()}[а-яё]+'
+        list_words=[x.group() for x in finditer(pattern,example.lower())]
+        if len(list_words)>1:
+            example = sub(pattern, list_words[example1], example, flags = IGNORECASE)
+
+print(example)

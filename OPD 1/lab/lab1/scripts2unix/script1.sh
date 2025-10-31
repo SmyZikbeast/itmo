@@ -1,30 +1,32 @@
-mkdir lab01
-mkdir lab01/arcanine5
-mkdir lab01/arcanine5/bidoof
-touch lab01/arcanine5/treecko
-mkdir lab01/arcanine5/drowzee
-mkdir lab01/arcanine5/rattata
-mkdir lab01/golduck0
-touch lab01/golduck0/pidove
-mkdir lab01/golduck0/nincada
-mkdir lab01/golduck0/golduck
-mkdir lab01/magnezone2
-mkdir lab01/magnezone2/yamask
-touch lab01/magnezone2/whirlpede
-touch lab01/magnezone2/ferroseed
-mkdir lab01/magnezone2/mankey
-touch lab01/magnezone2/litwick
-touch lab01/parasect7
-touch lab01/pidgey9
-touch lab01/shelmet2
-echo  " Herbivore" > lab01/arcanine5/treecko
-echo  " Forest Grassland" > lab01/golduck0/pidove
-echo  "Urban" >> lab01/golduck0/pidove
-echo  " Overland=8 Surface=2 Jump=3 Power=3" > lab01/magnezone2/whirlpede
-echo  "Intelligience=3" >> lab01/magnezone2/whirlpede
-echo  "width=41.5 height=24.0 atk=5" > lab01/magnezone2/ferroseed
-echo  "def=9" >> lab01/magnezone2/ferroseed
-echo "Swarm Overgrow Effect Spore Dry" > lab01/parasect7
-echo "Skin" >> lab01/parasect7
-echo "satk=4 sdef=4 spd=6" > lab01/pidgey9
-echo "BUG NONE" > lab01/shelmet2
+mkdir lab0;
+mkdir lab0/arcanine5;
+mkdir lab0/arcanine5/bidoof;
+touch lab0/arcanine5/treecko;
+mkdir lab0/arcanine5/drowzee;
+mkdir lab0/arcanine5/rattata;
+mkdir lab0/golduck0;
+touch lab0/golduck0/pidove;
+mkdir lab0/golduck0/nincada;
+mkdir lab0/golduck0/golduck;
+mkdir lab0/magnezone2;
+mkdir lab0/magnezone2/yamask;
+touch lab0/magnezone2/whirlpede;
+touch lab0/magnezone2/ferroseed;
+mkdir lab0/magnezone2/mankey;
+touch lab0/magnezone2/litwick;
+touch lab0/parasect7;
+touch lab0/pidgey9;
+touch lab0/shelmet2;
+echo  "Тип диеты Herbivore" > lab0/arcanine5/treecko;
+echo  "Живет Forest Grassland" > lab0/golduck0/pidove;
+echo  "Urban" >> lab0/golduck0/pidove;
+echo  "Возможности Overland=8 Surface=2 Jump=3 Power=3" > lab0/magnezone2/whirlpede;
+echo  "Intelligience=3" >> lab0/magnezone2/whirlpede;
+echo  "width=41.5 height=24.0 atk=5" > lab0/magnezone2/ferroseed;
+echo  "def=9" >> lab0/magnezone2/ferroseed;
+echo "Способности Swarm Overgrow Effect Spore Dry" > lab0/parasect7;
+echo "Skin" >> lab0/parasect7;
+echo "Способности Haunt Blaze Flash Fire Flame" > lab0/magnezone2/litwick;
+echo "Body" >> lab0/magnezone2/litwick;
+echo "satk=4 sdef=4 spd=6" > lab0/pidgey9;
+echo "Тип покемона BUG NONE" > lab0/shelmet2;
