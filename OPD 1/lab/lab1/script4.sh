@@ -4,7 +4,7 @@ ls -liR lab0 | grep '^m' | sort -k1,1n | head -n 3;
 cat "-----------------";
 ls  2> /dev/null -R lab0 | grep '2$' | sort -d;
 cat "-----------------";
-ls -lt 2> /dev/null -lRt lab0 | grep -E 'do' | sort -k6,8 | head -n 4;
+ls 2> /dev/null -lRt lab0 | grep -E 'do' | sort -k6,8 | head -n 4;
 cat "-----------------";
 ls -lRr lab0 | grep 'k$' | sort -d;
 cat "-----------------";
