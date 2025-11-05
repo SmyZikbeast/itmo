@@ -662,7 +662,8 @@ def Bishop_go(start,end):
         for y in Numbers.keys():
             if Letters[x]<Letters[start[0]] and Numbers[y]>Numbers[start[1]]:
                 if abs(Letters[start[0]] - Letters[x]) == abs(Numbers[start[1]] - Numbers[y]):
-                    if x+y in whites or x+y in blacks:
+                    if x+y in whites or x+y in blacks and flag =='0':
+                        ok.append(x+y)
                         flag='1'
                     elif flag=='0':
                         ok.append(x+y)
@@ -671,7 +672,8 @@ def Bishop_go(start,end):
         for y in Numbers.keys():
             if Letters[x]>Letters[start[0]] and Numbers[y]>Numbers[start[1]]:
                 if abs(Letters[start[0]] - Letters[x]) == abs(Numbers[start[1]] - Numbers[y]):
-                    if x+y in whites or x+y in blacks:
+                    if x+y in whites or x+y in blacks and flag =='0':
+                        ok.append(x+y)
                         flag='1'
                     elif flag=='0':
                         ok.append(x+y)
@@ -680,7 +682,8 @@ def Bishop_go(start,end):
         for y in reversed(Numbers.keys()):
             if Letters[x]<Letters[start[0]] and Numbers[y]<Numbers[start[1]]:
                 if abs(Letters[start[0]] - Letters[x]) == abs(Numbers[start[1]] - Numbers[y]):
-                    if x+y in whites or x+y in blacks:
+                    if x+y in whites or x+y in blacks and flag =='0':
+                        ok.append(x+y)
                         flag='1'
                     elif flag=='0':
                         ok.append(x+y)
@@ -689,7 +692,8 @@ def Bishop_go(start,end):
         for y in reversed(Numbers.keys()):
             if Letters[x]>Letters[start[0]] and Numbers[y]<Numbers[start[1]]:
                 if abs(Letters[start[0]] - Letters[x]) == abs(Numbers[start[1]] - Numbers[y]):
-                    if x+y in whites or x+y in blacks:
+                    if x+y in whites or x+y in blacks and flag =='0':
+                        ok.append(x+y)
                         flag='1'
                     elif flag=='0':
                         ok.append(x+y)            
@@ -720,8 +724,6 @@ def IsCorrectMove(start, end, piece):
             elif piecesWhite[piece] =='rook': #ЕСЛИ ЛАДЬЯ    
                 return Rook_go(start,end)
             elif piecesWhite[piece] =='queen': #ЕСЛИ ФЕРЗЬ
-                if end in whites:
-                    return False
                 return Rook_go(start,end) or end in Bishop_go(start,end)
             elif piecesWhite[piece] =='knight':
                 if end in whites:
@@ -756,27 +758,14 @@ def IsCorrectMove(start, end, piece):
         else:
             if end in blacks:
                 return False
-            if piecesBlack[piece] =='bishop': #если слон 
+            if piecesBlack[piece] =='bishop': #если слон 20.01.2025 14:51
                 if abs(Letters[start[0]] - Letters[end[0]]) == abs(Numbers[start[1]] - Numbers[end[1]]):
                     if end in Bishop_go(start,end):
                         return True
-            elif piecesBlack[piece] =='rook': #ЕСЛИ ЛАДЬЯ
-                if start[0]==end[0] or start[1]==end[1]:
-                    if start[0]==end[0]:
-                        for n in range(Numbers[min(end[1],start[1])]+100,Numbers[max(end[1],start[1])],100):
-                            ps=start[0]+NumbersR[n]
-                            if (ps in whites or ps in blacks):
-                                return False
-                        return True
-                    elif start[1]==end[1]:
-                        for n in range(Letters[min(end[0],start[0])]+100,Letters[max(end[0],start[0])],100):
-                            ps=LettersR[n]+start[1]
-                            if (ps in whites or ps in blacks):
-                                return False
-                        return True
+            elif piecesBlack[piece] =='rook': #ЕСЛИ ЛАДЬЯ    
+                return Rook_go(start,end)
             elif piecesBlack[piece] =='queen': #ЕСЛИ ФЕРЗЬ
-                if abs(Letters[start[0]] - Letters[end[0]]) == abs(Numbers[start[1]] - Numbers[end[1]]) or start[0]==end[0] or start[1]==end[1]:
-                    return True
+                return Rook_go(start,end) or end in Bishop_go(start,end)
             elif piecesBlack[piece] =='knight':
                 if (abs(Letters[start[0]] - Letters[end[0]]) == 100 and abs(Numbers[start[1]] - Numbers[end[1]]) == 200) or \
                    (abs(Letters[start[0]] - Letters[end[0]]) == 200 and abs(Numbers[start[1]] - Numbers[end[1]]) == 100):
