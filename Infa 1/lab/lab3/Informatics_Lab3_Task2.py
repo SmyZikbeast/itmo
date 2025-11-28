@@ -1,6 +1,6 @@
 # Author = Bashlachyov Alexander Pavlovich
 # Group = P3131
-# Date = 29.10.2025
+# Date = 01.11.2025
 
 from re import *
 
