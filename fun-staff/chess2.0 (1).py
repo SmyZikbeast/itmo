@@ -882,6 +882,7 @@ def MainGame(x,y):
             goto(x,y)
             onscreenclick(funBlack)
 onscreenclick(MainGame)
+done()
 '''while True:
     i += 1
     if i % 2 == 0:   
