@@ -1,5 +1,7 @@
 package Actions;
 
+import Characters.Character;
+
 public abstract class Action {
-    abstract void perform();
+    public abstract void perform(Object object,  Character character);
 }
