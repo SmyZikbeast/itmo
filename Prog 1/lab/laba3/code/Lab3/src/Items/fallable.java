@@ -1,5 +1,7 @@
 package Items;
 
+import Characters.Character;
+
 public interface fallable {
-    void fall(float level);
+    public void fall(Character character);
 }
