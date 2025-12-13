@@ -1,26 +1,26 @@
 package Characters;
 
 import Actions.Drink;
-import Enums.Locations;
+import Exceptions.ActionNotFoundException;
 import Exceptions.MissionFailedException;
 import Items.Item;
 import Items.fallable;
 import Records.Bottle;
 
 public class Baron extends Character {
-
     public Baron(String name) {
         super(name);
     }
 
-    public void performAction(Bottle bottle) {
-        if (Action instanceof Drink) {
-            ((Drink) Action).perform(bottle,this);
+    public void performAction(Bottle bottle) throws ActionNotFoundException {
+        if (this.getAction() instanceof Drink) {
+            Action.perform(bottle,this);
+        }
+        else {
+            throw new ActionNotFoundException("");
         }
     }
-    public String getLocation(){
-        return this.Location;
-    }
+
         @Override
         public void moveTo (Object place){
         try {

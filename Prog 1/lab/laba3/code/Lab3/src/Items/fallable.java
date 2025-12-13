@@ -3,5 +3,5 @@ package Items;
 import Characters.Character;
 
 public interface fallable {
-    public void fall(Character character);
+    void fall(Character character);
 }

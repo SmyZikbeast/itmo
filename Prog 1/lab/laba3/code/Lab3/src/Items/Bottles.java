@@ -1,10 +1,9 @@
 package Items;
-
 import Characters.Character;
 import Enums.Types;
 import Records.Bottle;
-
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Random;
 
 public class Bottles extends Item implements fallable{
@@ -14,8 +13,7 @@ public class Bottles extends Item implements fallable{
         Arrays.fill(BottlesList, null);
     }
 
-    Bottle[] BottlesList = new Bottle[10];
-
+    private final Bottle[] BottlesList = new Bottle[10];
     public Bottles(String Name, String Location) {
         super(Name, Location);
     }
@@ -30,5 +28,16 @@ public class Bottles extends Item implements fallable{
     }
     public Bottle[] getBottles() {
         return BottlesList;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (this.getClass() != o.getClass()) return false;
+        Bottles i = (Bottles) o;
+        return Name.equals(i.Name) && Location.equals(i.Location) && Arrays.equals(BottlesList, i.getBottles());
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(Name, Location, Arrays.hashCode(BottlesList));
     }
 }

@@ -1,12 +1,9 @@
 package Items;
-
-import Characters.Character;
-
 import java.util.Objects;
 
 public class Item {
-    String Name;
-    String Location;
+    protected String Name;
+    protected String Location;
     public Item(String Name, String Location) {
         this.Name = Name;
         this.Location = Location;
