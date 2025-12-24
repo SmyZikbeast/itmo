@@ -1,4 +1,46 @@
-group_name = "P3131"
+group_name = "P3131<0_o>"
+[[schedule]]
+day_number = "3"
+even_week = "false"
+[[schedule.lessons]]
+title = "История российской науки и техники"
+time = "11:30-13:00"
+campus = "Кронверкский пр., д.49, лит.А"
+auditory = "2336"
+type = "Практика"
+teacher = "Белоусов Александр Сергеевич"
+
+[[schedule.lessons]]
+title = "История российской науки и техники"
+timen = "15:30-17:00"
+campus = "Кронверкский пр., д.49, лит.А"
+auditory = "Alfa Space (2304)"
+type = "Лекция"
+teacher = "Белоусов Александр Сергеевич"
+
+
+[[schedule]]
+day_number = "3"
+even_week = "true"
+[[schedule.lessons]]
+title = "Программирование"
+time = "17:10-18:40"
+campus = "Кронверкский пр., д.49, лит.А"
+auditory = "2306/2"
+type = "Лабораторная"
+teacher = "Ермаков Михаил Константинович"
+
+[[schedule.lessons]]
+title = "Программирование"
+time = "18:50-20:20"
+campus = "Кронверкский пр., д.49, лит.А"
+auditory = "2306/2"
+type = "Лабораторная"
+teacher = "Ермаков Михаил Константинович"
+
+
+----------------------------------------------
+group_name = "P3131<0_o>"
 [[schedule]]
 day_number = "3"
 even_week = "false"

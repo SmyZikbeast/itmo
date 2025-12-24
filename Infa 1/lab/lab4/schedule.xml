@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<file>
+<group_name>P3131&lt;0_o&gt;</group_name>
+<schedule>
+<schedule_item>
+<day_number>3</day_number>
+<even_week>false</even_week>
+<lessons>
+<lessons_item>
+<title>История российской науки и техники</title>
+<time>11:30-13:00</time>
+<campus>Кронверкский пр., д.49, лит.А</campus>
+<auditory>2336</auditory>
+<type>Практика</type>
+<teacher>Белоусов Александр Сергеевич</teacher>
+</lessons_item>
+<lessons_item>
+<title>История российской науки и техники</title>
+<timen>15:30-17:00</timen>
+<campus>Кронверкский пр., д.49, лит.А</campus>
+<auditory>Alfa Space (2304)</auditory>
+<type>Лекция</type>
+<teacher>Белоусов Александр Сергеевич</teacher>
+</lessons_item>
+</lessons>
+</schedule_item>
+<schedule_item>
+<day_number>3</day_number>
+<even_week>true</even_week>
+<lessons>
+<lessons_item>
+<title>Программирование</title>
+<time>17:10-18:40</time>
+<campus>Кронверкский пр., д.49, лит.А</campus>
+<auditory>2306/2</auditory>
+<type>Лабораторная</type>
+<teacher>Ермаков Михаил Константинович</teacher>
+</lessons_item>
+<lessons_item>
+<title>Программирование</title>
+<time>18:50-20:20</time>
+<campus>Кронверкский пр., д.49, лит.А</campus>
+<auditory>2306/2</auditory>
+<type>Лабораторная</type>
+<teacher>Ермаков Михаил Константинович</teacher>
+</lessons_item>
+</lessons>
+</schedule_item>
+</schedule>
+</file>

@@ -27,7 +27,7 @@ def lex(string):
             tokens.append(ron_number)
         ron_string, string = lex_string(string)
         if ron_string is not None:
-            tokens.append(ron_string)
+            tokens.append(ron_string.replace("<","&lt;").replace(">","&gt;"))
             continue
         ron_bool, string = lex_bool(string)
         if ron_bool is not None:
@@ -111,8 +111,8 @@ def parse_array(tokens):
         return ron_array, tokens[1:]
     while True:
         ron, tokens = parse(tokens)
+        
         ron_array.append(ron)
-
         t = tokens[0]
         if t == RON_RIGHTBRACKET:
             return ron_array, tokens[1:]
@@ -170,47 +170,35 @@ def loads(string):
         raise Exception('Unexpected tokens after parsing')
     return result
 
-def serialize_value(value):
-    if isinstance(value, str):
-        return f'"{value}"'
-    elif isinstance(value, bool):
-        return 'true' if value else 'false'
-    elif isinstance(value, (int, float)):
-        return str(value)
-    elif isinstance(value, dict):
+def serialize_value(key, value):
+    if isinstance(value, dict):
         lines = []
         for k, v in value.items():
-            lines.append(f'{k} = {serialize_value(v)}')
-        return '{ ' + ', '.join(lines) + ' }'
+            lines.append(serialize_value(k, v))
+        return "\n".join(lines)
+    elif isinstance(value, list):
+        lines = [f"<{key}>"]
+        for item in value:
+            lines.append(f"<{key}_item>")
+            lines.append(serialize_value('item', item))
+            lines.append(f"</{key}_item>")
+        lines.append(f"</{key}>")
+        return "\n".join(lines)
     else:
-        return 'null'
+        return f"<{key}>{value}</{key}>"
 
-def serialize_to_toml(obj):
-    lines = []
+def serialize_to_xml(obj):
+    lines = ['<?xml version="1.0" ?>', '<file>']
     for key, value in obj.items():
-        if isinstance(value, list):
-            for item in value:
-                lines.append(f'[[{key}]]')
-                for k, v in item.items():
-                    if isinstance(v, list):
-                        for thing in v:
-                            lines.append(f'[[{key}.{k}]]')
-                            for l_k, l_v in thing.items():
-                                lines.append(f'{l_k} = {serialize_value(l_v)}')
-                    else:
-                        lines.append(f'{k} = {serialize_value(v)}')
-        else:
-            lines.append(f'{key} = {serialize_value(value)}')
-    return lines
-if __name__ == "__main__":
-    with open("schedule.ron", encoding="utf-8") as f:
-        schedule = f.read()
+        lines.append(serialize_value(key, value))
+    lines.append('</file>')
+    return "\n".join(lines)
 
-    data = loads(schedule)
-    print(data)
-    lines = serialize_to_toml(data)
-    toml_content = '\n'.join(lines)
+with open("schedule.ron", encoding="utf-8") as f:
+    schedule = f.read()
 
-    print(toml_content)
-    with open('schedule.toml', 'w', encoding="utf-8") as file:
-        file.write(toml_content)
+data = loads(schedule)
+xml_content = serialize_to_xml(data)
+print(xml_content)
+with open('schedule.xml', 'w', encoding="utf-8") as file:
+    file.write(xml_content)
