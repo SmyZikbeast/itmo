@@ -37,20 +37,23 @@ public abstract class Character extends Obj{
     public void Explain(String s){
         System.out.println("У "+this.getName()+"а было оправдание: \""+s+"\"");
     }
-    void moveTo(Object place){
+    public void moveTo(Object place){
         if (place instanceof Locations){
             this.Location = ((Locations) place).name();
+            System.out.println(this.getName() +" в локации:" + ((Locations)place).name());
         }
         else if (place instanceof Item) {
-            this.Location = ((Item)place).getName();
+            this.Location = (place);
+            System.out.println(this.getName() +" в локации:" + ((Item)place).getName());
         }
         else if (place instanceof Character) {
             this.Location = ((Character) place).getName();
+            System.out.println(this.getName() +" в локации:" + ((Character)place).getName());
         }
         else {
             throw new IllegalArgumentException("Сюда нельзя");
         }
-        System.out.println(this.getName() +" в локации:" + Location);
+
     }
 
     @Override

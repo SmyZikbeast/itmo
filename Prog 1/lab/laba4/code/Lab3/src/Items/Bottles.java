@@ -1,5 +1,6 @@
 package Items;
 import Characters.Character;
+import Enums.Colors;
 import Enums.Types;
 import Records.Bottle;
 import java.util.Arrays;
@@ -13,7 +14,7 @@ public class Bottles extends Item implements fallable{
         Arrays.fill(BottlesList, null);
     }
 
-    private final Bottle[] BottlesList = new Bottle[10];
+    private final Bottle[] BottlesList = new Bottle[50];
     public Bottles(String Name, String Location) {
         super(Name, Location);
     }
@@ -22,19 +23,19 @@ public class Bottles extends Item implements fallable{
         Types[] allTypes = Types.values();
         for (int i = 0; i < 10; i++) {
             Types type = allTypes[random.nextInt(3)];
-            Bottle bottle = new Bottle(type, (float) Math.random()*0.5f+0.5f);
+            Bottle bottle = new Bottle(type, (float) Math.random()*0.5f+0.5f, Colors.Red);
             BottlesList[i] = bottle;
         }
     }
-    public Bottle[] getBottles() {
-        return BottlesList;
+    public Bottle getBottle(int i) {
+        return BottlesList[i];
     }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (this.getClass() != o.getClass()) return false;
         Bottles i = (Bottles) o;
-        return Name.equals(i.Name) && Location.equals(i.Location) && Arrays.equals(BottlesList, i.getBottles());
+        return Name.equals(i.Name) && Location.equals(i.Location) && Arrays.equals(BottlesList, i.BottlesList);
     }
     @Override
     public int hashCode() {

@@ -8,9 +8,6 @@ public class Item extends Obj {
     public Item(String Name, String Location) {
         super(Name,Location);
     }
-    public Item(String Name) {
-        super(Name);
-    }
 
     @Override
     public String toString() {

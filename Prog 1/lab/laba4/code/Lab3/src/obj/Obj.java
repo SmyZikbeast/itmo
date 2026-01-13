@@ -1,8 +1,9 @@
 package obj;
 
-public class Obj {
+
+public abstract class Obj {
     public String Name;
-    public String Location;
+    public Object Location;
 
     public Obj(String name) {
         this.Name = name;
@@ -18,6 +19,6 @@ public class Obj {
     public String getName(){
         return this.Name;
     }
-    public void setLocation(String Location) {this.Location = Location;}
-    public String getLocation(){ return this.Location;}
+    public void setLocation(Object Location) {this.Location = Location;}
+    public Object getLocation(){ return this.Location;}
 }
