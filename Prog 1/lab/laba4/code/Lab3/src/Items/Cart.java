@@ -78,11 +78,8 @@ public class Cart extends Item {
                 Content.equals(i.Content);
 
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(Name, Location, Content);
     }
-
-
 }
