@@ -13,6 +13,8 @@ public class Hertsog extends Character {
         if (Action instanceof TouchWall) {
             Action.perform(object, this);
             this.addStressLevel(0.5f);
+        } else if (Action instanceof TouchBottle) {
+            Action.perform(object, this);
         }
         else
         {

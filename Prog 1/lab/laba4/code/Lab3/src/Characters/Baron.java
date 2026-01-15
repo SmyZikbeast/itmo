@@ -24,7 +24,7 @@ public class Baron extends Character {
     public void moveTo(Object place) {
         try {
             if (place instanceof Item) {
-                if (StressLevel > 8.5f) {
+                if (StressLevel > 14f) {
                     ((fallable) place).fall(this);
                     throw new MissionFailedException("Барона завалило");
                 }

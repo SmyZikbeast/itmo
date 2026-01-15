@@ -6,8 +6,6 @@ import obj.Obj;
 
 import java.util.Objects;
 
-import static Enums.Locations.CellarDoor;
-
 public class Cart extends Item {
     private Obj Content = null;
     private Character Driver = null;
@@ -27,6 +25,20 @@ public class Cart extends Item {
     public void setContent(Obj content) {
         this.Content = content;
     }
+    public void empty(){
+        if (Content instanceof Character){
+            if (((Character) Content).getStressLevel() > 7) {
+                System.out.println(Content.getName() + " выпал из тележки");
+            }
+            else {
+                System.out.println(Content.getName() + " вылез из тележки");
+            }
+        }
+        else {
+            System.out.println(Content.getName() + " выбросили из тележки");
+        }
+        this.Content = null;
+    }
     public void moveTo(Item Location) {
         if (Content != null) {
             System.out.println(Driver.getName() + " толкает тележку с " + Content.getName() + " в " + Location.getName());
@@ -35,8 +47,8 @@ public class Cart extends Item {
             System.out.println(Driver.getName() + " толкает тележку в " + Location.getName());
         }
         if (!(Location instanceof Door) || ((Door) Location).getState() == Boolean.TRUE) {
-            Driver.setLocation(Location.getLocation());
-            Content.setLocation(Location.getLocation());
+            Driver.setLocation(Location);
+            Content.setLocation(Location);
             this.Location = Location.getLocation();
             if (Location instanceof Door){
                 System.out.println("К счастью, дверь оказалась открытой");
@@ -47,7 +59,7 @@ public class Cart extends Item {
         }
     }
     @Override
-    public void setLocation(String Location) {
+    public void setLocation(Object Location) {
         if (Content != null) {
             System.out.println(Driver.getName() + " толкает тележку с " + Content.getName() + " в " + Location);
         }

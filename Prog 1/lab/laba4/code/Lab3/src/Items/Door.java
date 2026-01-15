@@ -5,7 +5,7 @@ import Characters.Character;
 import java.util.Objects;
 
 public class Door extends Item implements fallable{
-    private Boolean IsOpened = false;
+    private Boolean IsOpened;
     public Door(String Name, String Location) {
         super(Name, Location);
         this.IsOpened = (Math.random() > 0.1);
@@ -13,6 +13,12 @@ public class Door extends Item implements fallable{
     public Door(String Name, String Location, Boolean isOpened) {
         super(Name, Location);
         this.IsOpened = isOpened;
+    }
+    public void Open(){
+        this.IsOpened = Boolean.TRUE;
+    }
+    public void Close(){
+        this.IsOpened = Boolean.FALSE;
     }
     public Boolean getState() {
         return IsOpened;
