@@ -10,4 +10,4 @@
 
 ## Contents
 
-[Информатика](1 informatics/)
+[Информатика](1-informatics/)
