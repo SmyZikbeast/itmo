@@ -1,5 +1,5 @@
 <p align="center">
-      <img src="https://i.ibb.co/KBm026J/photo-2026-01-25-22-51-07.jpg" alt="*самый мужественный студент итмо" width="726">
+      <img src="https://i.ibb.co/KBm026J/photo-2026-01-25-22-51-07.jpg" alt="*самый мужественный студент итмо" width="400" height = "300">
 </p>
 
 
