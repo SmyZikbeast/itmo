@@ -1,6 +1,4 @@
-<p align="center">
-      <img src="https://i.ibb.co/KBm026J/photo-2026-01-25-22-51-07.jpg" alt="*самый мужественный студент итмо" width="400" height = "300">
-</p>
+![самый мужественный студент итмо](gif.mp4)
 
 
 ## About
