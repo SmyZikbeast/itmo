@@ -1,6 +1,6 @@
-<div align="center">
+
   ![я](./kisser.gif)
-</div>
+
 
 # About
 
