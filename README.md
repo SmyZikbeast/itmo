@@ -1,5 +1,5 @@
-<div align = "center">
-![самый мужественный студент итмо](./kisser.gif)
+<div align="center">
+  ![я](kisser.gif)
 </div>
 
 # About
