@@ -1,5 +1,5 @@
 <div align="center">
-  ![я](kisser.gif)
+  ![я](./kisser.gif)
 </div>
 
 # About
