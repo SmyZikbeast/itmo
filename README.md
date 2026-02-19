@@ -1,5 +1,6 @@
+<div align = "center">
 ![самый мужественный студент итмо](./kisser.gif)
-
+</div>
 
 # About
 
