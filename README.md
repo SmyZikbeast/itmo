@@ -1,5 +1,6 @@
-![самый мужественный студент итмо](./kisser.gif)
-
+<p align="center">
+  <img src="./kisser.gif" />
+</p>
 
 # About
 
