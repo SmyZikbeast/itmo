@@ -41,12 +41,12 @@ INSERT INTO WORK (ACTION, LENGTH, SUBJECT_ID, OBJECT_ID, MARKER_ID) VALUES
  5,                -- минут
  2,                -- исполнитель Малдун (WORKER.ID)
  3,                -- объект (WORK_OBJECT.ID)
- NULL)            
+ NULL),            
  ('установить', 
  5,                -- минут
  1,                -- исполнитель Иван (WORKER.ID)
  4,                -- объект (WORK_OBJECT.ID)
- 1)                -- метка (MARKER.ID)
+ 1);                -- метка (MARKER.ID)
 
 -- 7. Динозавр 
 INSERT INTO DINOSAURUS (TYPE, LOCATION_ID) VALUES 
