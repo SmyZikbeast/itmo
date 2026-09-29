@@ -1,49 +1,84 @@
 import {addButton, getCheckbox, getText} from './inputs.js';
-import {put, get, create} from './storage.js';
+import {put, get, getLastId} from './storage.js';
 import submittion from './submittion.js';
 const form = document.getElementById('form')
 const table = document.getElementById('result-table');
-
+const tbody = document.getElementById('result-table-body');
+const error = document.getElementById('error-field');
 const MAX_ROWS = 10;
 let rows = 0;
 
 let x;
 let y;
 let r;
-
+let id = getLastId()    ;
 function addNewLine(x,y,r){
-    let submit = new submittion(rows, x, y, r);
+    id++;
+    let submit = new submittion(id, x, y, r);
     put(submit);
     addLine(submit);
 }
 
 function addLine(submit){
-    const newRow = table.insertRow(1);
     rows++;
     if (rows > MAX_ROWS){
-        table.deleteRow(MAX_ROWS + 1);
+        table.deleteRow(MAX_ROWS);
     }
-    let time = submit.time;
+    const newRow = tbody.insertRow(0);
+    let time = new Date(submit.time);
     newRow.insertCell(0).textContent = submit.id;
     newRow.insertCell(1).textContent = submit.x;
     newRow.insertCell(2).textContent = submit.y;
     newRow.insertCell(3).textContent = submit.r;
-    newRow.insertCell(4).textContent = time.getHours()+':'+time.getMinutes()+':'+time.getSeconds();
+    newRow.insertCell(4).textContent = time.toLocaleString('ru-RU', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+});
     newRow.insertCell(5).textContent = submit.result;
 }
 
 export function handleTable(){
-    create();
+    updateTable();
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         getCheckbox('.r-check', updateR);
         getText('y-text', updateY, -5, 5);
         console.log("x = " + x + " y = " + y + " r = " + r);
-        if (x != null && r != null && y != null){
+        if (x == null){
+            error.innerText = 'wrong x value';
+        } else if (y == null){
+            error.innerText = 'wrong y value';
+        } else if (r == null){
+            error.innerText = 'wrong r value';
+        } else {
             addNewLine(x,y,r);
+            error.innerText = '';
         }
     }
     )
+}
+
+function updateTable(){
+    rows = 0;
+    tbody.innerHTML = '';
+    get().forEach((submittion) => {
+        addLine(submittion);
+    })
+}
+
+let timezone = new Date().getTimezoneOffset();
+function checkTimezone(){
+    let newTimezone = new Date().getTimezoneOffset();
+    if (timezone !== newTimezone){
+        console.log('timezone changed, updating table');
+        timezone = newTimezone;
+        updateTable();
+    }
 }
 
 function updateX(value){
@@ -59,3 +94,4 @@ function updateR(value){
 }
 
 addButton('.x-button', updateX);
+setInterval(checkTimezone, 500);

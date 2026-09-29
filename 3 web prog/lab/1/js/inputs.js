@@ -8,7 +8,6 @@ export function addButton(varName, callback){
 
 export function getCheckbox(varName, callback){
     const inputs = document.querySelectorAll(varName);
-    console.log(1);
     let val;
     let ctr = 0;
     inputs.forEach((input) => {
@@ -23,7 +22,9 @@ export function getCheckbox(varName, callback){
 export function getText(varName, callback, min, max){
     const input = document.getElementById(varName);
     let val = +input.value.replace(',', '.');
-    if (!isNaN(val) && val >= min && val <=max){
+    if (input.value.length == 0){
+        callback(null);
+    } else if (!isNaN(val) && val >= min && val <=max){
         callback(val);
     } else {
         callback(null);

@@ -1,15 +1,21 @@
 const storage = window.localStorage;
-
-export function create(){
-    storage.setItem("table", []);
-}
-
+const MAX_ROWS = 10;
 export function put(submit){
-    let table = storage.getItem("table");
+    let table = get() || [];
     table.push(submit);
-    storage.setItem("table", table);
+    if (table.length > MAX_ROWS){
+        table.shift();
+    }
+    storage.setItem("table", JSON.stringify(table));
 }
 
 export function get(){
-    return storage.getItem("table");
+    return JSON.parse(storage.getItem("table")) || [];
+}
+
+export function getLastId(){
+    if (get().length == 0){
+        return 0;
+    }
+    return Math.max(...get().map(item => item.id));
 }

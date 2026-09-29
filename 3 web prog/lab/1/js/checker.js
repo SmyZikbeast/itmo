@@ -11,7 +11,7 @@ function tr(x,y,r){
 }
 
 function tl(x,y,r){
-    return (x <= 0 && y >= 0 && x^2 + y^2 <= r^2);
+    return (x <= 0 && y >= 0 && x**2 + y**2 <= r**2);
 }
 
 export function check(x, y, r){
